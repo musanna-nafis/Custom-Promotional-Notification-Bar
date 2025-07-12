@@ -1,0 +1,435 @@
+<style>
+/* 1. Main Bar from Plugin */
+#wpfront-notification-bar {
+    height: 85px !important;
+    padding: 0 !important;
+    background: linear-gradient(90deg, #00468C, #0096C7) !important;
+    border: none !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+    display: flex !important;
+}
+
+/* 2. Forcing the Message container to take full width */
+
+#wpfront-notification-bar .wpfront-message {
+    width: 100% !important;
+    flex: 1 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* 3. Our Custom Banner Wrapper (inside the message box) */
+
+.my-promo-banner {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    width: 100%;
+    max-width: 1440px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 5px 24px;
+    font-family: 'Inter', sans-serif;
+}
+
+/* 4. Left & Middle content wrapper */
+.my-banner-main-content {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+.my-banner-left, .my-offer-details, .my-banner-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* 5. Text and Badge Styling */
+.my-banner-text {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+
+.my-offer-details {
+    display: flex;
+    align-items: baseline !important;
+    gap: 5px; 
+    font-size: 16px !important;
+    font-weight: 500 !important;
+}
+.my-banner-icon {
+    font-size: 20px;
+}
+
+/* 6. Button and Close Icon Styling */
+.my-banner-right {
+    gap: 24px;
+}
+.my-claim-button {
+    background-color: #FFC107;
+    color: #000000;
+    line-height: 18px;
+    padding: 7px 14px !important;
+    border-radius: 4px;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+.my-claim-button:hover {
+    background-color: #ffca2c;
+}
+.my-final-close-button {
+    font-size: 28px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+.my-final-close-button:hover {
+    color: white;
+}
+
+/* Responsive CSS for Tablet (Laptop-like layout with less gap) */
+
+@media (min-width: 641px) and (max-width: 1024px) {
+    /* Main Bar Height */
+    #wpfront-notification-bar {
+        height: 90px !important;
+    }
+    
+   .my-promo-banner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        padding: 10px 24px;
+    }
+
+    /* Left Side Content Area */
+    .my-banner-main-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .my-banner-left, .my-offer-details {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    
+    .my-banner-text {
+        font-size: 16px !important;
+    }
+    
+    .my-offer-details {
+        font-size: 16px !important;
+    }
+
+    /* Right Side Button Area */
+    .my-banner-right {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .my-claim-button {
+        padding: 7px 14px;
+        line-height: 18px;
+        font-size: 14px;
+        font-weight: 600;
+        white-space: nowrap;
+    }
+}
+
+@media (min-width: 491px) and (max-width: 640px) {
+
+    #wpfront-notification-bar {
+        height: auto !important;
+        min-height: 60px;
+    }
+
+    .my-promo-banner {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 4px;
+        gap: 16px;
+    }
+
+    .my-banner-main-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        text-align: start;
+        flex-grow: 1; 
+    }
+
+    .my-banner-left {
+        display: block;
+    }
+
+    .my-banner-text {
+        font-size: 14px !important; 
+        line-height: 1.4;
+    }
+
+    .my-offer-details {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 14px !important; 
+        font-weight: normal;
+    }
+
+    .my-banner-right {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+        flex-shrink: 0;
+    }
+
+    .my-claim-button {
+        padding: 6px 12px; 
+        font-size: 13px; 
+        font-weight: 600;
+        white-space: nowrap;
+    }
+    
+       .my-offer-details {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 15px !important;
+    font-weight: normal;
+}
+    
+}
+
+
+
+
+/* Responsive CSS for Mobile */
+
+@media (max-width: 490px) {
+    #wpfront-notification-bar {
+        height: auto !important;
+        min-height: 50px !important;
+    }
+    .my-promo-banner {
+        display: flex;
+        flex-direction: row;
+        align-items: center !important;
+        justify-content: space-between;
+        padding: 8px;
+        gap: 12px;
+    }
+    .my-banner-main-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        text-align: start; 
+    }
+    .my-banner-left {
+        display: block;
+    }
+      .my-banner-right {
+        display: flex;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 6px !important;
+        flex-shrink: 0;
+    }
+
+    .my-banner-text {
+        font-size: 14px !important;
+        line-height: 1.4;
+    }
+    .my-offer-details {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .my-offer-details {
+        font-size: 14px !important;
+    }
+    .my-banner-right {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        flex-shrink: 0;
+    }
+
+    .my-claim-button {
+    padding: 4px 10px;   
+    font-size: 12px !important;     
+    font-weight: 500;
+    white-space: nowrap;
+    }
+    
+    /*
+
+    .my-banner-left > *:not(.my-banner-text) {
+        display: none;
+    }
+    
+    */
+    
+    .my-banner-icon {
+    font-size: 16px;
+}
+    
+    .my-offer-details {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px;     
+    font-weight: normal; 
+}
+}
+.my-custom-bar-hidden {
+    display: none !important;
+}
+/* animation pulse */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.pulse-icon {
+  display: inline-block;
+  animation: pulse 1.2s infinite ease-in-out;
+}
+
+</style>
+
+<div class="my-promo-banner">
+    <div class="my-banner-main-content">
+        <div class="my-banner-left">
+                <span class="my-banner-icon pulse-icon">⚡️</span>
+                <span class="my-banner-icon">🎉</span>
+            <span class="my-banner-text">Limited Time Offer: Get 30% OFF Proctoring Pro!</span>
+        </div>
+        <div class="my-offer-details">
+            Ends in <span id="my-countdown-timer"></span>
+        </div>
+    </div>
+
+    <div class="my-banner-right">
+        <a href="https://elearning23.com/checkout/?add-to-cart=925" class="my-claim-button">Claim Offer</a>
+       <span class="my-final-close-button">&times;</span>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const closeBtn = document.querySelector('.my-final-close-button');
+
+    if (closeBtn) {
+        const mainBar = closeBtn.closest('.my-promo-banner');
+        const section = document.getElementById('my-notification-section');
+
+        closeBtn.addEventListener('click', function () {
+            if (mainBar) {
+                mainBar.style.display = 'none';
+                console.log('✅ Banner hidden');
+            }
+
+            if (section) {
+                section.style.display = 'none';
+                console.log('✅ Section container hidden');
+            } else {
+                console.log('❌ Section not found with ID my-notification-section');
+            }
+        });
+    } else {
+        console.log('❌ Close button not found');
+    }
+});
+
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    const timerElement = document.getElementById("my-countdown-timer");
+
+    if (!timerElement) {
+        console.error("Timer element with ID 'my-countdown-timer' not found.");
+        return;
+    }
+
+    let countdownInterval;
+
+    //  Set Your expiry date here
+    const endDate = new Date("jul 12, 2025 11:00:59").getTime();
+
+    function formatTime(time) {
+        return String(time).padStart(2, '0');
+    }
+
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = endDate - now;
+
+        if (distance < 0) {
+            clearInterval(countdownInterval);
+            // Expired text updated with units
+            timerElement.innerHTML = "00h : 00m : 00s";
+            return;
+        }
+
+        const twentyFourHoursInMs = 24 * 60 * 60 * 1000;
+        let timerHTML = "";
+
+        if (distance > twentyFourHoursInMs) {
+            // More than 24 hours left: Format as DDd : HHh : MMm
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds= Math.floor((distance % (1000 * 60 )) / (1000));
+            // --- CHANGE: Added d, h, m units ---
+            timerHTML = formatTime(days) + "d : " + formatTime(hours) + "h : " + formatTime(minutes) + "m : " + formatTime(seconds) + "s";
+        } else {
+            // Less than 24 hours left: Format as HHh : MMm : SSs
+            const hours = Math.floor(distance / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            // --- CHANGE: Added h, m, s units ---
+            timerHTML = formatTime(hours) + "h : " + formatTime(minutes) + "m : " + formatTime(seconds) + "s";
+        }
+        
+        timerElement.innerHTML = timerHTML;
+    }
+
+    // Run it once immediately
+    updateCountdown();
+    
+    // Then, set it to update every second
+    countdownInterval = setInterval(updateCountdown, 1000);
+
+});
+
+</script>
+
